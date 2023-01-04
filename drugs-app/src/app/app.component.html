@@ -1,0 +1,45 @@
+<h1>Drugstore medication database</h1>
+
+<input placeholder="Specify Drug Name" [(ngModel)]="newDrug.name">
+<input placeholder="Specify Drug Description" [(ngModel)]="newDrug.description">
+<input type="number" placeholder="Specify Drug Quantity" [(ngModel)]="newDrug.quantity">
+
+<button (click)="addDrug()">Add New Drug</button>
+
+<br>
+<br>
+
+<table>
+  <tr >
+    <th> UUID</th>
+    <th> Drug</th>
+    <th> Description</th>
+    <th> Date Added</th>
+    <th> Quantity</th>
+    <th> Update</th>
+    <th> Delete</th>
+  </tr>
+
+  <ng-template ngFor let-drug [ngForOf]="drugs" let-i="index" >
+
+    <tr >
+      <td>{{drug.ID}}</td>
+      <td>{{drug.name}}</td>
+      <td>{{drug.description}}</td>
+      <td>{{drug.CreatedAt}}</td>
+      <td> <input type="number" [(ngModel)]="drug.quantity"></td>
+      <td>
+        <button (click)="updateDrug(drug.ID, drug.quantity)">Update</button>
+      </td>
+      <td>
+        <button (click)="deleteDrug(i)">Delete</button>
+      </td>
+    </tr>
+  </ng-template>
+</table>
+
+
+
+
+
+
